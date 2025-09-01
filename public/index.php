@@ -25,8 +25,8 @@ ob_start(); // start template buffer
             <td><?= htmlspecialchars($user['email']) ?></td>
             <td><?= htmlspecialchars($user['password']) ?></td>
             <td>
-                <a href="../src/read.php?id<?= $user['id'] ?>">View</a>
-                <a href="../src/read.php?id<?= $user['id'] ?>">Edit</a>
+                <a href="../src/read.php?id=<?= $user['id'] ?>">View</a>
+                <a href="../src/read.php?id=<?= $user['id'] ?>">Edit</a>
                 <a href="../src/delete.php?id=<?= $user['id'] ?>" onclick="return confirm('Delete user?')">Delete</a>
             </td>
         </tr>
