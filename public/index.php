@@ -1,40 +1,17 @@
 <?php
-require_once "../config/database.php";
+require_once __DIR__ . "../vendor/autoload.php";
 
-$stmt = $pdo->query("SELECT * FROM users ORDER BY created_at DESC");
-$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+use App\Controller\UserController;
 
-ob_start(); // start template buffer
-?>
+$controller = new UserController();
+$action = $_GET['action'] ?? 'index';
+$id = $_GET['id'] ?? null;
 
-<h2>All Users</h2>
-<a href="../src//create.php">Add User</a>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Password</th>
-        <th>Actions</th>
-    </tr>
-    <!-- Loop users -->
-    <?php foreach ($users as $user): ?>
-        <tr>
-            <td><?= htmlspecialchars($user['id']) ?></td>
-            <td><?= htmlspecialchars($user['name']) ?></td>
-            <td><?= htmlspecialchars($user['email']) ?></td>
-            <td><?= htmlspecialchars($user['password']) ?></td>
-            <td>
-                <a href="../src/read.php?id=<?= $user['id'] ?>">View</a>
-                <a href="../src/read.php?id=<?= $user['id'] ?>">Edit</a>
-                <a href="../src/delete.php?id=<?= $user['id'] ?>" onclick="return confirm('Delete user?')">Delete</a>
-            </td>
-        </tr>
-    <?php endforeach; ?>
-</table>
-
-<?php 
-    $content = ob_get_clean();
-    $title = "User List";
-    include "../templates/layout.php";
-?>
+switch ($action) {
+    case 'index': $controller->index(); break;
+    case 'show': $controller->show((int)$id); break;
+    case 'create': $controller->create(); break;
+    case 'edit': $controller->edit((int)$id); break;
+    case 'delete': $controller->delete((int)$id); break;
+    default: echo "404 Not Found";
+}
