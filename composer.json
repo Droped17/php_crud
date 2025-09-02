@@ -2,7 +2,7 @@
     "name": "classi-kal/php_crud",
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "app/"
         }
     },
     "authors": [
