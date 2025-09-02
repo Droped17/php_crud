@@ -1,5 +1,5 @@
 <h1>User List</h1>
-<a href="./create.php">➕ Add User</a>
+<a href="index.php?controller=user&action=create">➕ Add User</a>
 <table border="1" cellpadding="8">
     <tr><th>ID</th><th>Name</th><th>Email</th><th>Actions</th></tr>
     <?php foreach ($users as $u): ?>
