@@ -26,6 +26,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?controller=categories&action=index">Categories</a>
                         </li>
+                        <!-- Batches link -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?controller=batches&action=index">Batches</a>
+                        </li>
                     </ul>
                 </div>
             </div>

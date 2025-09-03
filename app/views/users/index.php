@@ -1,5 +1,11 @@
-<?php include __DIR__ . "/../header.php"; ?>
+<?php 
+include __DIR__ . "/../header.php"; 
+$id = "diikdeoqd58r1g8dr";
+?>
 <div class="container my-4 d-flex flex-column mb-3">
+    <div class="border p-2">
+        <?php echo"{$id}" ?>
+    </div>
     <h1>User List</h1>
     <a href="index.php?controller=user&action=create" class="btn btn-primary w-25">Add User</a>
     <?php if (!empty($users)): ?>

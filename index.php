@@ -3,9 +3,9 @@
 <?php
 require_once "vendor/autoload.php"; //load classes and composer
 
+use App\Controllers\BatchesController;
 use App\Controllers\CategoriesController;
 use App\Controllers\UserController;
-use App\Controllers\ChecklistController;
 
 $controller = $_GET['controller'] ?? 'user';
 $action = $_GET['action'] ?? 'index';
@@ -29,10 +29,10 @@ switch ($controller) {
             echo "404 - Action not found";
         }
         break;
-    case 'checklist':
-        $checklistController = new ChecklistController();
-        if (method_exists($checklistController, $action)) {
-            $id ? $checklistController->$action($id) : $checklistController->$action();
+    case 'batches':
+        $batchesController = new BatchesController();
+        if (method_exists($batchesController, $action)) {
+            $id ? $batchesController->$action($id) : $batchesController->$action();
         } else {
             echo "404 - Action not found";
         }
