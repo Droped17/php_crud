@@ -3,7 +3,9 @@
 <?php
 require_once "vendor/autoload.php"; //load classes and composer
 
+use App\Controllers\CategoriesController;
 use App\Controllers\UserController;
+use App\Controllers\ChecklistController;
 
 $controller = $_GET['controller'] ?? 'user';
 $action = $_GET['action'] ?? 'index';
@@ -19,6 +21,22 @@ switch ($controller) {
         }
         break;
     /* add more case */
+    case 'categories':
+        $categoriesController = new CategoriesController();
+        if (method_exists($categoriesController, $action)) {
+            $id ? $categoriesController->$action($id) : $categoriesController->$action();
+        } else {
+            echo "404 - Action not found";
+        }
+        break;
+    case 'checklist':
+        $checklistController = new ChecklistController();
+        if (method_exists($checklistController, $action)) {
+            $id ? $checklistController->$action($id) : $checklistController->$action();
+        } else {
+            echo "404 - Action not found";
+        }
+        break;
     default:
         echo "404 - Controller not found";
 }
